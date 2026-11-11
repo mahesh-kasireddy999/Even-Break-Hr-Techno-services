@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries - EvenBreak HR Techno Services</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', Arial, sans-serif; color: #102747; overflow-x: hidden; background: #ffffff; }
+a { text-decoration: none; color: inherit; }
+
+/* --- STICKY NAVBAR --- */
+.navbar { 
+    height: 80px; 
+    padding: 0 5%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background: white; 
+    border-bottom: 1px solid #eee; 
+    position: sticky; /* Keeps it at the top */
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.logo img { width: 155px; height: auto; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
+.nav-links a { font-size: 14px; font-weight: 600; color: #102747; display: flex; align-items: center; gap: 6px; height: 100%; transition: color 0.2s; }
+.nav-links a:hover { color: #075bff; }
+.nav-links a i { font-size: 10px; transition: transform 0.3s ease; }
+.hiring-btn { background: #075bff; color: white !important; padding: 11px 20px; border-radius: 25px; height: auto !important; }
+.nav-right { display: flex; align-items: center; gap: 15px; font-size: 14px; font-weight: 600; color: #102747; }
+.nav-location { display: inline-flex; align-items: center; gap: 8px; background: #075bff; color: white; padding: 10px 18px; border-radius: 25px; transition: 0.3s; }
+.nav-location:hover { background: #003fc4; color: white; }
+.nav-location i { color: white; }
+.nav-icons { display: flex; align-items: center; gap: 15px; margin-left: 10px; }
+.nav-icons span { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: 0.2s; }
+.nav-icons span:hover { color: #075bff; }
+.nav-icons i { font-size: 16px; }
+.nav-icons .chevron { font-size: 10px; margin-left: -2px; }
+
+/* DROPDOWN (Services) */
+.nav-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.dropdown-menu { position: absolute; top: 80px; left: 0; width: 300px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 3px solid #075bff; border-radius: 0 0 8px 8px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 99; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown:hover > a i { transform: rotate(180deg); }
+.dropdown-container { padding: 10px 0; display: flex; flex-direction: column; }
+.dropdown-container a { font-size: 14px; font-weight: 500; color: #182b43; padding: 15px 20px; border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
+.dropdown-container a:hover { background: #f0f7ff; color: #075bff; }
+.dropdown-container a:last-child { border-bottom: none; }
+
+/* CLEAN INDUSTRIES HERO SECTION */
+.industries-hero { position: relative; background: #071426; display: flex; align-items: center; padding: 80px 5%; min-height: 400px; color: white; overflow: hidden; }
+.industries-hero::before { content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; opacity: 0.2; z-index: 0; }
+
+.hero-content { position: relative; z-index: 1; max-width: 600px; }
+.hero-content .small-heading { font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: #e0efff; }
+.hero-content .small-heading::after { content: ""; height: 1px; width: 40px; background: #e0efff; }
+.hero-content h1 { font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-content p { font-size: 16px; line-height: 1.6; color: #cbd5e1; margin-bottom: 30px; max-width: 450px; }
+.hero-content .btn-white { background: white; color: #071426; padding: 12px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; width: fit-content; transition: 0.3s; }
+.hero-content .btn-white:hover { background: #f0f7ff; transform: translateY(-2px); }
+
+/* MAIN GRID SECTION */
+.sectors-section { padding: 80px 5%; background: #ffffff; text-align: center; }
+.sector-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #64748b; margin-bottom: 10px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 15px; }
+.sector-tag::before, .sector-tag::after { content: ""; height: 1px; width: 40px; background: #cbd5e1; }
+.sectors-section h2 { font-size: 36px; font-weight: 800; color: #0b1a30; margin-bottom: 50px; }
+.sectors-section h2 span { color: #075bff; }
+
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.sector-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; position: relative; display: block; }
+.sector-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+.sector-img { width: 100%; height: 160px; object-fit: cover; background-color: #f1f5f9; }
+.sector-bottom { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: white; position: relative; }
+.sector-icon { width: 40px; height: 40px; border-radius: 50%; background: #075bff; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; position: absolute; top: -20px; left: 20px; border: 4px solid white; }
+.sector-title { font-size: 15px; font-weight: 700; color: #0b1a30; margin-left: 50px; }
+.sector-arrow { color: #075bff; font-size: 16px; }
+
+/* BLUE CTA BANNER */
+.cta-banner { background: #075bff; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; color: white; }
+.cta-left { display: flex; align-items: center; gap: 25px; }
+.cta-icon { font-size: 45px; opacity: 0.8; }
+.cta-text h3 { font-size: 28px; font-weight: 800; margin-bottom: 5px; }
+.cta-text p { font-size: 15px; color: #e0efff; }
+.cta-btn { background: white; color: #075bff; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+.cta-btn:hover { background: #f0f7ff; transform: translateY(-2px); }
+
+/* FOOTER */
+.footer { background: #071426; color: white; padding: 60px 5% 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 45px; }
+.footer-logo { color: #0875ff; font-size: 26px; font-weight: 900; letter-spacing: 4px; margin-bottom: 20px; }
+.footer-logo span { color: #ff413a; }
+.footer-description { color: #91a3bd; font-size: 13px; line-height: 1.8; max-width: 320px; margin-bottom: 25px; }
+.footer h4 { color: white; font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a, .footer-contact p, .footer-contact a { color: #91a3bd; font-size: 13px; line-height: 1.6; }
+.footer-links a:hover, .footer-contact a:hover { color: white; }
+.footer-contact p { margin-bottom: 10px; }
+.footer-contact i { width: 22px; }
+.copyright { margin-top: 50px; padding-top: 20px; border-top: 1px solid #263347; color: #91a3bd; font-size: 12px; display: flex; justify-content: space-between; }
+
+/* RESPONSIVE */
+@media(max-width: 1200px) {
+    .nav-links { gap: 15px; }
+    .nav-links a { font-size: 13px; }
+    .nav-location span { display: none; }
+}
+@media(max-width: 1100px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+}
+@media(max-width: 750px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-banner { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+@media(max-width: 500px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .copyright { flex-direction: column; gap: 10px; }
+    .nav-icons span:first-child { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="EvenBreak Logo"></a>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+            <a href="index.html#services">Services <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="it.html">IT</a>
+                    <a href="engineering.html">Engineering</a>
+                    <a href="bim.html">Building Information Modeling (BIM)</a>
+                    <a href="gis.html">QGIS & GIS Services</a>
+                    <a href="pdf.html">PDF Accessibility & Remediation</a>
+                </div>
+            </div>
+        </div>
+        <a href="industries.html" style="color: #075bff;">Industries <i class="fa-solid fa-chevron-down"></i></a>
+        <a href="what-we-think.html">What We Think</a>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="hiring.html" class="hiring-btn">Hiring 🔥</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd,+Waltair+Main+Road,+Visakhapatnam" target="_blank" rel="noopener" class="nav-location" title="Visit our office">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Visakhapatnam</span>
+        </a>
+        <div class="nav-icons">
+            <span><i class="fa-solid fa-magnifying-glass"></i> Search</span>
+            <span><i class="fa-solid fa-globe"></i> IN <i class="fa-solid fa-chevron-down chevron"></i></span>
+        </div>
+    </div>
+</nav>
+
+<!-- CLEAN INDUSTRIES HERO SECTION -->
+<section class="industries-hero">
+    <div class="hero-content">
+        <div class="small-heading">INDUSTRIES</div>
+        <h1>Solutions for<br>Every Industry</h1>
+        <p>Driving innovation across diverse industries with cutting-edge technology.</p>
+        <a href="#sectors" class="btn-white">Explore Our Industries <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- MAIN GRID SECTION -->
+<section class="sectors-section" id="sectors">
+    <div class="sector-tag">OUR INDUSTRIES</div>
+    <h2>Powering Growth Across <span>Key Sectors</span></h2>
+
+    <div class="grid-4">
+        <a href="healthcare.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Healthcare">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="sector-title">Healthcare</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="government.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Government">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="sector-title">Government</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="manufacturing.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Manufacturing">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-industry"></i></div>
+                <div class="sector-title">Manufacturing</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="architecture.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Architecture">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-building"></i></div>
+                <div class="sector-title">Architecture</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="construction.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Construction">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                <div class="sector-title">Construction</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="insurance.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Insurance">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-file-shield"></i></div>
+                <div class="sector-title">Insurance</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="education.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Education" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop'">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="sector-title">Education</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="publishing.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Publishing">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-book-open"></i></div>
+                <div class="sector-title">Publishing</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="corporate.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Corporate">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="sector-title">Corporate</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="enterprise.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Enterprise">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="sector-title">Enterprise</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="infrastructure.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Infrastructure">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-city"></i></div>
+                <div class="sector-title">Infrastructure</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="utilities.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Utilities">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="sector-title">Utilities</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+        <a href="realestate.html" class="sector-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&auto=format&fit=crop" class="sector-img" alt="Real Estate">
+            <div class="sector-bottom">
+                <div class="sector-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <div class="sector-title">Real Estate</div>
+                <i class="fa-solid fa-arrow-right sector-arrow"></i>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- BLUE CTA BANNER -->
+<section class="cta-banner">
+    <div class="cta-left">
+        <div class="cta-icon"><i class="fa-regular fa-handshake"></i></div>
+        <div class="cta-text">
+            <h3>Let's Build Something Together</h3>
+            <p>Partner with EvenBreak for innovative IT solutions and digital transformation.</p>
+        </div>
+    </div>
+    <a href="contact.html" class="cta-btn">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">EB<span>HRTS</span></div>
+            <p class="footer-description">EvenBreak HR Techno Services Pvt. Ltd. is a technology-driven service company delivering digital and specialized business solutions.</p>
+            <div class="footer-contact">
+                <p><i class="fa-regular fa-envelope"></i> <a href="mailto:info@evenbreakhr.com">info@evenbreakhr.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+918498999299">+91 84989 99299</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd" target="_blank" style="line-height: 1.6;">Evenbreak HR Techno Services Pvt Ltd, Waltair Main Road, Visakhapatnam, Andhra Pradesh</a></p>
+                <p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/company/evenbreak-hr-services/">EvenBreak HR Services on LinkedIn</a></p>
+            </div>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <div class="footer-links">
+                <a href="engineering.html">Engineering</a>
+                <a href="it.html">IT</a>
+                <a href="bim.html">Building Information Modeling (BIM)</a>
+                <a href="gis.html">QGIS & GIS Services</a>
+                <a href="pdf.html">PDF Accessibility & Remediation</a>
+            </div>
+        </div>
+        <div>
+            <h4>Industries</h4>
+            <div class="footer-links">
+                <a href="healthcare.html">Healthcare</a>
+                <a href="government.html">Government</a>
+                <a href="manufacturing.html">Manufacturing</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="construction.html">Construction</a>
+                <a href="insurance.html">Insurance</a>
+                <a href="education.html">Education</a>
+                <a href="publishing.html">Publishing</a>
+                <a href="industries.html">View all</a>
+            </div>
+        </div>
+        <div>
+            <h4>Company</h4>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="what-we-think.html">What We Think</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2017 EvenBreak HR Techno Services Pvt. Ltd. All rights reserved.</p>
+        <p>Established 2017 | Visakhapatnam, Andhra Pradesh</p>
+    </div>
+</footer>
+
+</body>
+</html>

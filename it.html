@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Services - EvenBreak HR Techno Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', Arial, sans-serif; color: #102747; overflow-x: hidden; background: #f8fafc; }
+a { text-decoration: none; color: inherit; }
+
+/* --- STICKY NAVBAR --- */
+.navbar { height: 80px; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.logo img { width: 155px; height: auto; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
+.nav-links a { font-size: 13px; font-weight: 600; color: #182b43; display: flex; align-items: center; gap: 6px; height: 100%; transition: color 0.2s; }
+.nav-links a:hover { color: #0875ff; }
+.nav-links a i { font-size: 10px; transition: transform 0.3s ease; }
+.hiring-btn { background: #075bff; color: white !important; padding: 11px 20px; border-radius: 25px; height: auto !important; }
+.nav-right { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 600; color: #182b43; }
+.nav-location { display: inline-flex; align-items: center; gap: 8px; background: #075bff; color: white; padding: 10px 18px; border-radius: 25px; transition: 0.3s; }
+.nav-location:hover { background: #003fc4; color: white; }
+.nav-location i { color: white; }
+.nav-icons { display: flex; align-items: center; gap: 20px; margin-left: 10px; border-left: 1px solid #ddd; padding-left: 20px; }
+
+/* DROPDOWN MENU */
+.nav-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.dropdown-menu { position: absolute; top: 80px; left: 0; width: 100vw; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 1px solid #eee; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 99; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown:hover > a i { transform: rotate(180deg); }
+.dropdown-container { padding: 20px 5%; max-width: 1000px; display: flex; flex-direction: column; }
+.dropdown-container a { font-size: 15px; font-weight: 500; color: #182b43; padding: 20px 0; border-bottom: 1px solid #f0f0f0; transition: color 0.2s; }
+.dropdown-container a:hover { color: #0875ff; }
+.dropdown-container a:last-child { border-bottom: none; }
+
+/* --- SCROLLING ANNOUNCEMENT BAR --- */
+.ticker-wrap { width: 100%; overflow: hidden; background-color: #075bff; color: white; padding: 10px 0; font-size: 14px; font-weight: 600; position: sticky; top: 80px; z-index: 999; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.ticker { display: flex; animation: ticker 25s linear infinite; padding-left: 100%; }
+.ticker:hover { animation-play-state: paused; }
+.ticker-item { display: inline-flex; align-items: center; color: white; text-decoration: none; padding-right: 50px; }
+.ticker-item:hover { color: #ffd700; }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+/* HERO SECTION */
+.it-hero { position: relative; min-height: 500px; background: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1600&q=80') center/cover no-repeat; display: flex; align-items: center; padding: 0 5%; color: white; }
+.it-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,20,38,0.95) 0%, rgba(7,20,38,0.7) 50%, transparent 100%); }
+.it-hero-content { position: relative; z-index: 1; max-width: 650px; }
+.it-tag { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #e0efff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.it-tag::after { content: ""; height: 1px; width: 40px; background: #e0efff; }
+.it-hero h1 { font-size: clamp(38px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.it-hero p { font-size: 17px; line-height: 1.6; color: #d1e0f0; margin-bottom: 30px; max-width: 500px; }
+.it-hero .primary-btn { background: white; color: #071426; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; }
+.it-hero .primary-btn:hover { background: #e0efff; }
+
+/* CARDS SECTION */
+.it-services { padding: 80px 5%; background: #f8fafc; }
+.it-services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+.it-services-header h2 { font-size: 38px; font-weight: 800; color: #071426; line-height: 1.2; margin-top: 10px; }
+.it-services-header h2 span { color: #a5b0bf; display: block; }
+.it-services-header .view-all { color: #075bff; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+
+.cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.it-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; transition: .3s; }
+.it-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+.it-card-img { height: 140px; width: 100%; object-fit: cover; }
+.it-card-content { padding: 25px 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.it-card-icon { width: 40px; height: 40px; background: #075bff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: -45px; margin-bottom: 15px; border: 4px solid white; }
+.it-card h3 { font-size: 16px; font-weight: 800; color: #071426; margin-bottom: 10px; line-height: 1.3; }
+.it-card p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+.it-card a { font-size: 13px; font-weight: 700; color: #075bff; display: flex; align-items: center; gap: 5px; }
+
+/* CTA BANNER */
+.cta-banner { background: #075bff; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; color: white; }
+.cta-left { display: flex; align-items: center; gap: 25px; }
+.cta-icon { font-size: 45px; opacity: 0.8; }
+.cta-text h3 { font-size: 28px; font-weight: 800; margin-bottom: 5px; }
+.cta-text p { font-size: 15px; color: #e0efff; }
+.cta-btn { background: white; color: #075bff; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+.cta-btn:hover { background: #f0f7ff; }
+
+/* FOOTER */
+.footer { background: #071426; color: white; padding: 60px 5% 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-logo { color: #0875ff; font-size: 22px; font-weight: 900; letter-spacing: 2px; margin-bottom: 20px; }
+.footer-logo span { color: #ff413a; }
+.footer p, .footer a { color: #91a3bd; font-size: 13px; line-height: 1.8; }
+.footer a:hover { color: white; }
+.footer-contact p { margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;}
+.footer-contact i { margin-top: 4px; }
+.footer h4 { color: white; font-size: 15px; margin-bottom: 20px; font-weight: 700; }
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+.copyright { display: flex; justify-content: space-between; border-top: 1px solid #1a2c42; padding-top: 20px; color: #91a3bd; font-size: 12px; }
+
+@media (max-width: 1100px) { .cards-grid { grid-template-columns: repeat(3, 1fr); } .nav-links { display: none; } .ticker-wrap { top: 70px; } }
+@media (max-width: 800px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } .cta-banner { flex-direction: column; align-items: flex-start; gap: 20px; } .footer-grid { grid-template-columns: 1fr 1fr; } .nav-location span { display: none; } }
+@media (max-width: 500px) { .cards-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .copyright { flex-direction: column; gap: 10px; } .it-services-header { flex-direction: column; align-items: flex-start; gap: 15px; } }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="EvenBreak Logo"></a>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+            <a href="index.html#services">Services <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="it.html">IT</a>
+                    <a href="engineering.html">Engineering</a>
+                    <a href="bim.html">Building Information Modeling (BIM)</a>
+                    <a href="gis.html">QGIS & GIS Services</a>
+                    <a href="pdf.html">PDF Accessibility & Remediation</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="industries.html">Industries <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="healthcare.html">Healthcare</a>
+                    <a href="government.html">Government</a>
+                    <a href="manufacturing.html">Manufacturing</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="construction.html">Construction</a>
+                    <a href="insurance.html">Insurance</a>
+                    <a href="education.html">Education</a>
+                    <a href="publishing.html">Publishing</a>
+                    <a href="corporate.html">Corporate</a>
+                    <a href="enterprise.html">Enterprise</a>
+                    <a href="infrastructure.html">Infrastructure</a>
+                    <a href="utilities.html">Utilities</a>
+                    <a href="realestate.html">Real Estate</a>
+                </div>
+            </div>
+        </div>
+        <a href="what-we-think.html">What We Think</a>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="hiring.html" class="hiring-btn">Hiring 🔥</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd,+Waltair+Main+Road,+Visakhapatnam" target="_blank" rel="noopener" class="nav-location" title="Visit our office">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Visakhapatnam</span>
+        </a>
+        <div class="nav-icons">
+            <span><i class="fa-solid fa-magnifying-glass"></i> Search</span>
+            <span><i class="fa-solid fa-globe"></i> IN <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></span>
+        </div>
+    </div>
+</nav>
+
+<!-- SCROLLING ANNOUNCEMENT BAR -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+    </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="it-hero">
+    <div class="it-hero-content">
+        <div class="it-tag">OUR SERVICES</div>
+        <h1>Technology-Driven<br>Solutions for a Smarter Tomorrow</h1>
+        <p>Innovative services to help you build, scale and grow with confidence.</p>
+        <a href="index.html#services" class="primary-btn">Explore Our Services <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- CARDS SECTION -->
+<section class="it-services">
+    <div class="it-services-header">
+        <div>
+            <div class="it-tag" style="color:#64748b; margin-bottom:5px;">WHAT WE DO</div>
+            <h2>Five service lines.<span>One standard of quality.</span></h2>
+        </div>
+        <a href="index.html#services" class="view-all">View all services <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="cards-grid">
+        <div class="it-card">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600" class="it-card-img" alt="Software">
+            <div class="it-card-content">
+                <div class="it-card-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Software Development & Enterprise Engineering</h3>
+                <p>Build scalable and robust software solutions tailored to your business needs.</p>
+                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="it-card">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600" class="it-card-img" alt="Cloud">
+            <div class="it-card-content">
+                <div class="it-card-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h3>Cloud Infrastructure, DevOps & Platform Engineering</h3>
+                <p>Build, deploy and scale with confidence on the cloud.</p>
+                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="it-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" class="it-card-img" alt="Data">
+            <div class="it-card-content">
+                <div class="it-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Data Engineering, Analytics & AI</h3>
+                <p>Turn data into actionable insights with advanced analytics and AI.</p>
+                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="it-card">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600" class="it-card-img" alt="Security">
+            <div class="it-card-content">
+                <div class="it-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Cybersecurity & IT Operations</h3>
+                <p>Stay secure with proactive monitoring and robust security solutions.</p>
+                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="it-card">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600" class="it-card-img" alt="Support">
+            <div class="it-card-content">
+                <div class="it-card-icon"><i class="fa-solid fa-headset"></i></div>
+                <h3>Managed IT Services & Support</h3>
+                <p>Reliable IT support to keep your business running smoothly.</p>
+                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+    <div class="cta-left">
+        <div class="cta-icon"><i class="fa-regular fa-handshake"></i></div>
+        <div class="cta-text">
+            <h3>Let's Build Something Together</h3>
+            <p>Partner with EvenBreak for innovative IT solutions and digital transformation.</p>
+        </div>
+    </div>
+    <a href="contact.html" class="cta-btn">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">EVENBREAK<span>.</span></div>
+            <p style="margin-bottom: 20px;">EvenBreak HR Techno Services Pvt. Ltd. is a technology-driven service company delivering digital and specialized business solutions.</p>
+            <div class="footer-contact">
+                <p><i class="fa-regular fa-envelope"></i> info@evenbreakhr.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 84989 99299</p>
+                <p><i class="fa-solid fa-location-dot"></i> Waltair Main Rd, Visakhapatnam, Andhra Pradesh 530003</p>
+                <p><i class="fa-brands fa-linkedin"></i> EvenBreak HR Services on LinkedIn</p>
+            </div>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <div class="footer-links">
+                <a href="engineering.html">Engineering</a>
+                <a href="it.html">IT</a>
+                <a href="bim.html">Building Information Modeling (BIM)</a>
+                <a href="gis.html">QGIS & GIS Services</a>
+                <a href="pdf.html">PDF Accessibility & Remediation</a>
+            </div>
+        </div>
+        <div>
+            <h4>Industries</h4>
+            <div class="footer-links">
+                <a href="healthcare.html">Healthcare</a>
+                <a href="government.html">Government</a>
+                <a href="manufacturing.html">Manufacturing</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="construction.html">Construction</a>
+                <a href="insurance.html">Insurance</a>
+                <a href="education.html">Education</a>
+                <a href="publishing.html">Publishing</a>
+                <a href="industries.html">View all</a>
+            </div>
+        </div>
+        <div>
+            <h4>Company</h4>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="what-we-think.html">What We Think</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2017 EvenBreak HR Techno Services Pvt. Ltd. All rights reserved.</p>
+        <p>Established 2017 | Visakhapatnam, Andhra Pradesh</p>
+    </div>
+</footer>
+
+</body>
+</html>

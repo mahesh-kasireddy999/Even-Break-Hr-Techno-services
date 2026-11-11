@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Information Modeling (BIM) - EvenBreak HR Techno Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', Arial, sans-serif; color: #102747; overflow-x: hidden; background: #ffffff; }
+a { text-decoration: none; color: inherit; }
+
+/* --- STICKY NAVBAR --- */
+.navbar { height: 80px; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.logo img { width: 155px; height: auto; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
+.nav-links a { font-size: 13px; font-weight: 600; color: #182b43; display: flex; align-items: center; gap: 6px; height: 100%; transition: color 0.2s; }
+.nav-links a:hover { color: #0875ff; }
+.nav-links a i { font-size: 10px; transition: transform 0.3s ease; }
+.hiring-btn { background: #075bff; color: white !important; padding: 11px 20px; border-radius: 25px; height: auto !important; }
+.nav-right { display: flex; align-items: center; gap: 20px; font-size: 13px; font-weight: 600; color: #182b43; }
+.nav-location { display: inline-flex; align-items: center; gap: 8px; background: #075bff; color: white; padding: 10px 18px; border-radius: 25px; transition: 0.3s; }
+.nav-location:hover { background: #003fc4; color: white; }
+.nav-location i { color: white; }
+
+/* DROPDOWN */
+.nav-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.dropdown-menu { position: absolute; top: 80px; left: 0; width: 100vw; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 1px solid #eee; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 99; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown:hover > a i { transform: rotate(180deg); }
+.dropdown-container { padding: 20px 5%; max-width: 1000px; display: flex; flex-direction: column; }
+.dropdown-container a { font-size: 15px; font-weight: 500; color: #182b43; padding: 20px 0; border-bottom: 1px solid #f0f0f0; transition: color 0.2s; }
+.dropdown-container a:hover { color: #0875ff; }
+.dropdown-container a:last-child { border-bottom: none; }
+
+/* --- SCROLLING ANNOUNCEMENT BAR --- */
+.ticker-wrap { width: 100%; overflow: hidden; background-color: #075bff; color: white; padding: 10px 0; font-size: 14px; font-weight: 600; position: sticky; top: 80px; z-index: 999; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.ticker { display: flex; animation: ticker 25s linear infinite; padding-left: 100%; }
+.ticker:hover { animation-play-state: paused; }
+.ticker-item { display: inline-flex; align-items: center; color: white; text-decoration: none; padding-right: 50px; }
+.ticker-item:hover { color: #ffd700; }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+/* HERO SECTION */
+.bim-hero { position: relative; min-height: 450px; background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; color: white; }
+.bim-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.8) 60%, transparent 100%); }
+.bim-hero-content { position: relative; z-index: 1; max-width: 650px; padding-top: 30px; }
+.bim-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #e0efff; margin-bottom: 15px; text-transform: uppercase; }
+.bim-hero h1 { font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.bim-hero p { font-size: 15px; line-height: 1.7; color: #d1e0f0; margin-bottom: 30px; max-width: 520px; }
+.bim-hero .primary-btn { background: #075bff; color: white; padding: 14px 28px; border-radius: 30px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+.bim-hero .primary-btn:hover { background: #003fc4; }
+
+/* BREADCRUMB */
+.breadcrumb { padding: 15px 5%; background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #64748b; display: flex; gap: 8px; align-items: center; }
+.breadcrumb a { color: #64748b; }
+.breadcrumb a:hover { color: #075bff; }
+.breadcrumb span { color: #102747; font-weight: 500; }
+
+/* WHAT WE DELIVER SECTION */
+.deliver-section { padding: 80px 5%; background: white; }
+.deliver-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #64748b; margin-bottom: 10px; text-transform: uppercase; }
+.deliver-section h2 { font-size: 36px; font-weight: 800; color: #0b1a30; margin-bottom: 40px; }
+.deliver-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.deliver-card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: white; transition: 0.3s; display: flex; flex-direction: column; }
+.deliver-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: #cbd5e1; }
+.deliver-card.active { border-color: #075bff; box-shadow: 0 10px 30px rgba(7,91,255,0.1); }
+.deliver-image-wrapper { position: relative; height: 180px; width: 100%; }
+.deliver-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.deliver-num { position: absolute; bottom: 15px; left: 20px; font-size: 28px; font-weight: 800; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.deliver-content { padding: 25px 20px; }
+.deliver-card.active .deliver-content h3 { color: #075bff; }
+.deliver-content h3 { font-size: 18px; font-weight: 800; color: #0b1a30; margin-bottom: 12px; transition: 0.3s; }
+.deliver-content p { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+/* CAPABILITIES SECTION */
+.capabilities-section { padding: 80px 5%; background: #ffffff; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; border-top: 1px solid #e2e8f0; }
+.cap-left h2 { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #64748b; margin-bottom: 15px; text-transform: uppercase; }
+.cap-left p { font-size: 15px; color: #475569; line-height: 1.6; }
+.cap-right { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid #e2e8f0; }
+.cap-item { padding: 18px 15px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 12px; font-size: 14px; color: #334155; font-weight: 500; }
+.cap-item i { color: #075bff; font-size: 14px; }
+.cap-right .cap-item:nth-child(odd) { border-right: 1px solid #e2e8f0; }
+
+/* DARK CTA BANNER */
+.dark-cta { margin: 0 5% 80px; background: #071426; border-radius: 16px; padding: 50px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; color: white; }
+.dark-cta h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+.dark-cta p { font-size: 15px; color: #91a3bd; margin-bottom: 30px; }
+.dark-cta .btn-white { background: white; color: #071426; padding: 12px 25px; border-radius: 30px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; }
+.dark-cta .btn-white:hover { background: #e2e8f0; }
+
+/* FOOTER */
+.footer { background: #071426; color: white; padding: 60px 5% 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 45px; }
+.footer-logo { color: #0875ff; font-size: 26px; font-weight: 900; letter-spacing: 4px; margin-bottom: 20px; }
+.footer-logo span { color: #ff413a; }
+.footer-description { color: #91a3bd; font-size: 13px; line-height: 1.8; max-width: 320px; margin-bottom: 25px; }
+.footer h4 { color: white; font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a, .footer-contact p, .footer-contact a { color: #91a3bd; font-size: 13px; line-height: 1.6; }
+.footer-links a:hover, .footer-contact a:hover { color: white; }
+.footer-contact p { margin-bottom: 10px; }
+.footer-contact i { width: 22px; }
+.copyright { margin-top: 50px; padding-top: 20px; border-top: 1px solid #263347; color: #91a3bd; font-size: 12px; display: flex; justify-content: space-between; }
+
+/* RESPONSIVE */
+@media(max-width: 1000px) {
+    .nav-links { display: none; }
+    .deliver-grid { grid-template-columns: 1fr; }
+    .capabilities-section { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .ticker-wrap { top: 70px; }
+}
+@media(max-width: 750px) {
+    .nav-location span { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .copyright { flex-direction: column; gap: 10px; }
+    .cap-right { grid-template-columns: 1fr; }
+    .cap-right .cap-item:nth-child(odd) { border-right: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="EvenBreak Logo"></a>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+            <a href="index.html#services">Services <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="it.html">IT</a>
+                    <a href="engineering.html">Engineering</a>
+                    <a href="bim.html">Building Information Modeling (BIM)</a>
+                    <a href="gis.html">QGIS & GIS Services</a>
+                    <a href="pdf.html">PDF Accessibility & Remediation</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="industries.html">Industries <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="healthcare.html">Healthcare</a>
+                    <a href="government.html">Government</a>
+                    <a href="manufacturing.html">Manufacturing</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="construction.html">Construction</a>
+                    <a href="insurance.html">Insurance</a>
+                    <a href="education.html">Education</a>
+                    <a href="publishing.html">Publishing</a>
+                    <a href="corporate.html">Corporate</a>
+                    <a href="enterprise.html">Enterprise</a>
+                    <a href="infrastructure.html">Infrastructure</a>
+                    <a href="utilities.html">Utilities</a>
+                    <a href="realestate.html">Real Estate</a>
+                </div>
+            </div>
+        </div>
+        <a href="what-we-think.html">What We Think</a>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="hiring.html" class="hiring-btn">Hiring 🔥</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd,+Waltair+Main+Road,+Visakhapatnam" target="_blank" rel="noopener" class="nav-location" title="Visit our office">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Visakhapatnam</span>
+        </a>
+        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        <span><i class="fa-solid fa-globe"></i> IN</span>
+    </div>
+</nav>
+
+<!-- SCROLLING ANNOUNCEMENT BAR -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+        <a href="hiring.html" class="ticker-item">🚀 WE ARE HIRING! Kickstart your career with our 3-Month IT Internship Program for 2025 & 2026 graduates. Apply Now! 🚀</a>
+    </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="bim-hero">
+    <div class="bim-hero-content">
+        <div class="bim-tag">A COLLABORATIVE PROCESS ENABLED BY TECHNOLOGY</div>
+        <h1>Building Information<br>Modeling (BIM)</h1>
+        <p>Our teams support engineering and construction projects through accurate digital modeling and project coordination, helping deliver projects on time and within budget.</p>
+        <a href="contact.html" class="primary-btn">Have a Project? Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size: 10px;"></i>
+    <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size: 10px;"></i>
+    <span>Building Information Modeling (BIM)</span>
+</div>
+
+<!-- WHAT WE DELIVER SECTION -->
+<section class="deliver-section">
+    <div class="deliver-tag">OUR SERVICES</div>
+    <h2>What we deliver</h2>
+
+    <div class="deliver-grid">
+        <div class="deliver-card">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="3D BIM Modeling">
+                <div class="deliver-num">01</div>
+            </div>
+            <div class="deliver-content">
+                <h3>3D BIM Modeling</h3>
+                <p>Creating accurate, data-rich 3D models that assess technical and financial viability, construction stability and project performance before building begins.</p>
+            </div>
+        </div>
+
+        <div class="deliver-card">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=800&auto=format&fit=crop" alt="Clash Detection & Coordination">
+                <div class="deliver-num">02</div>
+            </div>
+            <div class="deliver-content">
+                <h3>Clash Detection & Coordination</h3>
+                <p>Identifying and resolving conflicts between architectural, structural and MEP systems early, reducing field rework and costly delays.</p>
+            </div>
+        </div>
+
+        <div class="deliver-card active">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop" alt="Scan to BIM">
+                <div class="deliver-num">03</div>
+            </div>
+            <div class="deliver-content">
+                <h3>Scan to BIM</h3>
+                <p>Using 3D laser scanned data to create precise digital representations of existing conditions for renovation, retrofit and documentation projects.</p>
+            </div>
+        </div>
+
+        <div class="deliver-card">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Construction Drawings">
+                <div class="deliver-num">04</div>
+            </div>
+            <div class="deliver-content">
+                <h3>Construction & Shop Drawings</h3>
+                <p>Producing detailed fabrication and shop drawings with all specifications needed by contractors and fabricators for accurate on-site execution.</p>
+            </div>
+        </div>
+
+        <div class="deliver-card">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop" alt="Quantity Take-Off">
+                <div class="deliver-num">05</div>
+            </div>
+            <div class="deliver-content">
+                <h3>Quantity Take-Off & As-Built Models</h3>
+                <p>Extracting accurate quantity take-offs from BIM models and delivering verified as-built models that reflect final construction.</p>
+            </div>
+        </div>
+
+        <div class="deliver-card">
+            <div class="deliver-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop" alt="BIM Coordination">
+                <div class="deliver-num">06</div>
+            </div>
+            <div class="deliver-content">
+                <h3>BIM Coordination & VDC Management</h3>
+                <p>Managing the full BIM coordination process across disciplines, ensuring all teams work from a single, reliable shared dataset.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CAPABILITIES SECTION -->
+<section class="capabilities-section">
+    <div class="cap-left">
+        <h2>OUR CAPABILITIES</h2>
+        <p>A focused set of capabilities, delivered by experienced professionals with quality assurance at every step.</p>
+    </div>
+
+    <div class="cap-right">
+        <div class="cap-item"><i class="fa-solid fa-check"></i> BIM Modeling</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> Clash Detection</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> Quantity Take-Off</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> Shop Drawings</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> As-Built Models</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> Revit Modeling</div>
+        <div class="cap-item"><i class="fa-solid fa-check"></i> BIM Coordination</div>
+        <div class="cap-item" style="background: #f8fafc;"></div>
+    </div>
+</section>
+
+<!-- DARK CTA BANNER -->
+<section class="dark-cta">
+    <h2>Have a BIM project in mind?</h2>
+    <p>Let's discuss how our digital modeling capabilities can support your goals.</p>
+    <a href="contact.html" class="btn-white">Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">EB<span>HRTS</span></div>
+            <p class="footer-description">EvenBreak HR Techno Services Pvt. Ltd. is a technology-driven service company delivering digital and specialized business solutions.</p>
+            <div class="footer-contact">
+                <p><i class="fa-regular fa-envelope"></i> <a href="mailto:info@evenbreakhr.com">info@evenbreakhr.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+918498999299">+91 84989 99299</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd" target="_blank" style="line-height: 1.6;">Evenbreak HR Techno Services Pvt Ltd, Waltair Main Road, Visakhapatnam, Andhra Pradesh</a></p>
+                <p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/company/evenbreak-hr-services/">EvenBreak HR Services on LinkedIn</a></p>
+            </div>
+        </div>
+
+        <div>
+            <h4>Services</h4>
+            <div class="footer-links">
+                <a href="engineering.html">Engineering</a>
+                <a href="it.html">IT</a>
+                <a href="bim.html">Building Information Modeling (BIM)</a>
+                <a href="gis.html">QGIS & GIS Services</a>
+                <a href="pdf.html">PDF Accessibility & Remediation</a>
+            </div>
+        </div>
+
+        <div>
+            <h4>Industries</h4>
+            <div class="footer-links">
+                <a href="healthcare.html">Healthcare</a>
+                <a href="government.html">Government</a>
+                <a href="manufacturing.html">Manufacturing</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="construction.html">Construction</a>
+                <a href="insurance.html">Insurance</a>
+                <a href="education.html">Education</a>
+                <a href="publishing.html">Publishing</a>
+                <a href="industries.html">View all</a>
+            </div>
+        </div>
+
+        <div>
+            <h4>Company</h4>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="what-we-think.html">What We Think</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2017 EvenBreak HR Techno Services Pvt. Ltd. All rights reserved.</p>
+        <p>Established 2017 | Visakhapatnam, Andhra Pradesh</p>
+    </div>
+</footer>
+
+</body>
+</html>

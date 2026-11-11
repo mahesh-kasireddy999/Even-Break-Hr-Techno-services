@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Now - EvenBreak HR Techno Services</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', Arial, sans-serif; color: #102747; background: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px 20px; }
+a { text-decoration: none; color: inherit; }
+
+/* MAIN FORM CARD */
+.form-container { background: white; width: 100%; max-width: 600px; border-radius: 16px; padding: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); position: relative; }
+.back-link { position: absolute; top: 30px; left: 30px; font-size: 14px; color: #64748b; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.back-link:hover { color: #075bff; }
+
+.form-header { text-align: center; margin-bottom: 40px; margin-top: 20px; }
+.form-header .logo { width: 160px; margin-bottom: 20px; }
+.form-header h1 { font-size: 28px; font-weight: 800; color: #0b1a30; margin-bottom: 10px; }
+.form-header p { font-size: 15px; color: #64748b; line-height: 1.6; }
+
+.form-group { margin-bottom: 22px; }
+.form-group label { display: block; font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 8px; }
+.form-group input, .form-group select { width: 100%; padding: 14px 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 15px; color: #102747; outline: none; transition: 0.3s; background: #f8fafc; }
+.form-group input:focus, .form-group select:focus { border-color: #075bff; background: white; box-shadow: 0 0 0 4px rgba(7,91,255,0.1); }
+
+/* Checkbox Multi-Select Styling */
+.checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.checkbox-label { display: flex; align-items: center; gap: 10px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; color: #334155; transition: 0.2s; user-select: none; }
+.checkbox-label:hover { border-color: #075bff; background: #f0f7ff; }
+.checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: #075bff; cursor: pointer; }
+.checkbox-label input[type="checkbox"]:checked + span { color: #075bff; font-weight: 700; }
+.checkbox-label:has(input[type="checkbox"]:checked) { border-color: #075bff; background: #f0f7ff; }
+
+/* File Upload Styling */
+.file-upload-wrapper { border: 2px dashed #cbd5e1; border-radius: 8px; padding: 30px; text-align: center; background: #f8fafc; transition: 0.3s; cursor: pointer; position: relative; }
+.file-upload-wrapper:hover { border-color: #075bff; background: #f0f7ff; }
+.file-upload-wrapper i { font-size: 32px; color: #075bff; margin-bottom: 10px; }
+.file-upload-wrapper p { font-size: 14px; color: #475569; font-weight: 600; }
+.file-upload-wrapper span { font-size: 12px; color: #94a3b8; display: block; margin-top: 5px; }
+.file-upload-wrapper input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+.submit-btn { width: 100%; background: #075bff; color: white; border: none; padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+.submit-btn:hover { background: #003fc4; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(7, 91, 255, 0.2); }
+
+/* RESPONSIVE */
+@media(max-width: 600px) {
+    .form-container { padding: 30px 20px; margin-top: 40px; }
+    .back-link { top: 20px; left: 20px; }
+    .form-header { margin-top: 40px; }
+    .checkbox-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <a href="hiring.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Openings</a>
+
+    <!-- Form Section -->
+    <div>
+        <div class="form-header">
+            <img src="logo.png" alt="EvenBreak Logo" class="logo" onerror="this.style.display='none'">
+            <h1>Application Form</h1>
+            <p>Please fill out the details below and upload your latest resume to apply.</p>
+        </div>
+
+        <!-- Standard HTML Form Action to FormSubmit -->
+        <form action="https://formsubmit.co/hr@evenbreakhr.com" method="POST" enctype="multipart/form-data">
+            
+            <!-- FormSubmit Configurations -->
+            <input type="hidden" name="_subject" value="New Job/Internship Application!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <!-- Note: The _next redirect is removed so you can test it locally without errors -->
+
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="Name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="Email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" name="Phone" placeholder="Enter your 10-digit mobile number" required>
+            </div>
+
+            <div class="form-group">
+                <label>Highest Qualification *</label>
+                <select name="Qualification" required>
+                    <option value="" disabled selected>Select your highest qualification</option>
+                    <option value="B.Tech / B.E">B.Tech / B.E</option>
+                    <option value="B.Sc">B.Sc</option>
+                    <option value="BCA">BCA</option>
+                    <option value="B.Com">B.Com</option>
+                    <option value="M.Tech / M.E">M.Tech / M.E</option>
+                    <option value="M.Sc">M.Sc</option>
+                    <option value="MCA">MCA</option>
+                    <option value="MBA">MBA</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Passing Year / Batch *</label>
+                <select name="Batch" required>
+                    <option value="" disabled selected>Select your passing year</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+
+            <!-- Programming Languages Known -->
+            <div class="form-group">
+                <label>Programming Languages Known *</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="Java">
+                        <span>Java</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="Python">
+                        <span>Python</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="C / C++">
+                        <span>C / C++</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="C# / .NET">
+                        <span>C# / .NET</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="JavaScript / React">
+                        <span>JavaScript / React</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="HTML / CSS">
+                        <span>HTML / CSS</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="SQL / Databases">
+                        <span>SQL / Databases</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="Languages" value="GIS / QGIS">
+                        <span>GIS / QGIS</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Resume (PDF/DOCX) *</label>
+                <div class="file-upload-wrapper">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Click to upload or drag and drop</p>
+                    <span>PDF, DOC, DOCX (Max 5MB)</span>
+                    <!-- Ensure name="Attachment" is present for the file to be sent -->
+                    <input type="file" name="Attachment" accept=".pdf,.doc,.docx" required id="resumeInput">
+                </div>
+                <p id="fileNameDisplay" style="font-size: 13px; color: #075bff; font-weight: 600; margin-top: 10px; display: none;"></p>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Application <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Show the selected filename
+    document.getElementById('resumeInput').addEventListener('change', function(e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : '';
+        const display = document.getElementById('fileNameDisplay');
+        if(fileName) {
+            display.textContent = 'Selected: ' + fileName;
+            display.style.display = 'block';
+        } else {
+            display.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

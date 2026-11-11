@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiring & Internships - EvenBreak HR Techno Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', Arial, sans-serif; color: #102747; overflow-x: hidden; background: #ffffff; }
+a { text-decoration: none; color: inherit; }
+
+/* --- STICKY NAVBAR --- */
+.navbar { height: 80px; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.logo img { width: 155px; height: auto; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 25px; height: 100%; }
+.nav-links a { font-size: 14px; font-weight: 600; color: #102747; display: flex; align-items: center; gap: 6px; height: 100%; transition: color 0.2s; }
+.nav-links a:hover { color: #075bff; }
+.nav-links a i { font-size: 10px; transition: transform 0.3s ease; }
+.hiring-btn { background: #075bff; color: white !important; padding: 11px 20px; border-radius: 25px; height: auto !important; }
+.nav-right { display: flex; align-items: center; gap: 15px; font-size: 14px; font-weight: 600; color: #102747; }
+.nav-location { display: inline-flex; align-items: center; gap: 8px; background: #075bff; color: white; padding: 10px 18px; border-radius: 25px; transition: 0.3s; }
+.nav-location:hover { background: #003fc4; color: white; }
+.nav-location i { color: white; }
+.nav-icons { display: flex; align-items: center; gap: 15px; margin-left: 10px; }
+.nav-icons span { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: 0.2s; }
+.nav-icons i { font-size: 16px; }
+
+/* DROPDOWN */
+.nav-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.dropdown-menu { position: absolute; top: 80px; left: 0; width: 300px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 3px solid #075bff; border-radius: 0 0 8px 8px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; z-index: 99; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown:hover > a i { transform: rotate(180deg); }
+.dropdown-container { padding: 10px 0; display: flex; flex-direction: column; max-height: 70vh; overflow-y: auto; }
+.dropdown-container a { font-size: 14px; font-weight: 500; color: #182b43; padding: 15px 20px; border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
+.dropdown-container a:hover { background: #f0f7ff; color: #075bff; }
+.dropdown-container a:last-child { border-bottom: none; }
+
+/* HERO SECTION */
+.careers-hero { position: relative; min-height: 450px; background: #f4f7fb; display: flex; align-items: center; padding: 0 5%; overflow: hidden; }
+.careers-hero::before { content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop') center right/cover no-repeat; opacity: 0.9; z-index: 0; }
+.careers-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #f4f7fb 0%, #f4f7fb 40%, transparent 100%); z-index: 1; }
+
+.hero-content { position: relative; z-index: 2; max-width: 650px; }
+.hero-content .small-heading { font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #075bff; text-transform: uppercase; }
+.hero-content .small-heading::after { content: ""; height: 1px; width: 40px; background: #075bff; }
+.hero-content h1 { font-size: clamp(40px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 15px; color: #0b1a30; }
+.hero-content h2 { font-size: 20px; font-weight: 700; color: #0b1a30; margin-bottom: 15px; }
+.hero-content p { font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 30px; max-width: 500px; }
+.hero-content .btn-blue { background: #075bff; color: white; padding: 14px 28px; border-radius: 30px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; cursor: pointer; text-decoration: none; }
+.hero-content .btn-blue:hover { background: #003fc4; transform: translateY(-2px); }
+
+/* INTERNSHIP BANNER */
+.internship-banner { margin: -40px 5% 40px; position: relative; z-index: 10; background: #e0efff; border-radius: 12px; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.intern-left { display: flex; align-items: center; gap: 30px; }
+.intern-left .cap-icon { width: 120px; height: auto; } 
+.intern-text .badge { background: #075bff; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+.intern-text h2 { font-size: 28px; font-weight: 800; color: #0b1a30; margin-bottom: 8px; }
+.intern-text .batches { font-size: 14px; font-weight: 700; color: #075bff; margin-bottom: 10px; display: block; }
+.intern-text p { font-size: 14px; color: #475569; max-width: 400px; }
+
+.intern-features { display: flex; align-items: center; gap: 30px; border-left: 1px solid #cbd5e1; padding-left: 30px; }
+.feature-item { text-align: center; }
+.feature-item i { font-size: 24px; color: #075bff; margin-bottom: 10px; }
+.feature-item h4 { font-size: 14px; font-weight: 700; color: #0b1a30; line-height: 1.3; }
+.feature-item p { font-size: 12px; color: #64748b; }
+
+.intern-btn { background: #075bff; color: white; padding: 14px 30px; border-radius: 30px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; white-space: nowrap; transition: 0.3s; border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
+.intern-btn:hover { background: #003fc4; transform: translateY(-2px); }
+
+/* HIRING DOMAINS */
+.domains-section { padding: 0 5% 50px; }
+.section-title { font-size: 20px; font-weight: 800; color: #0b1a30; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.section-title::before { content: ""; height: 2px; width: 20px; background: #075bff; }
+
+.domains-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; }
+.domain-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px 15px; text-align: center; transition: 0.3s; }
+.domain-card:hover { background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #075bff; transform: translateY(-3px); }
+.domain-card i { font-size: 28px; color: #075bff; margin-bottom: 15px; }
+.domain-card h4 { font-size: 14px; font-weight: 600; color: #0b1a30; }
+
+/* OPENINGS */
+.positions-section { padding: 60px 5%; background: #ffffff; }
+.position-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+.position-card:hover { border-color: #075bff; box-shadow: 0 5px 20px rgba(7,91,255,0.08); }
+.pos-info h3 { font-size: 20px; font-weight: 800; color: #0b1a30; margin-bottom: 10px; }
+.pos-tags { display: flex; gap: 10px; }
+.pos-tag { background: #f1f5f9; color: #475569; font-size: 12px; padding: 6px 12px; border-radius: 20px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.pos-tag i { color: #075bff; }
+.apply-btn { background: white; border: 2px solid #075bff; color: #075bff; padding: 10px 24px; border-radius: 30px; font-weight: 700; transition: 0.3s; cursor: pointer; font-family: inherit; font-size: 14px; display: inline-block; text-decoration: none; }
+.apply-btn:hover { background: #075bff; color: white; }
+
+/* WHY JOIN US SECTION */
+.why-join-section { padding: 50px 5% 60px; display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 40px; border-top: 1px solid #e2e8f0; background: #f8fafc; }
+.why-col h3 { font-size: 22px; font-weight: 800; color: #075bff; margin-bottom: 20px; }
+.why-list { list-style: none; }
+.why-list li { font-size: 15px; color: #334155; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; font-weight: 500; }
+.why-list i { color: #075bff; margin-top: 3px; }
+
+.grow-card { background: #e0efff; border-radius: 12px; padding: 40px; display: flex; align-items: center; gap: 25px; }
+.grow-icon { font-size: 60px; color: #075bff; }
+.grow-text h3 { font-size: 24px; font-weight: 800; color: #0b1a30; margin-bottom: 10px; }
+.grow-text p { font-size: 14px; color: #475569; margin-bottom: 20px; }
+
+/* FOOTER */
+.footer { background: #071426; color: white; padding: 60px 5% 20px; border-top: 4px solid #075bff; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 45px; }
+.footer-logo { color: #0875ff; font-size: 26px; font-weight: 900; letter-spacing: 4px; margin-bottom: 20px; }
+.footer-logo span { color: #ff413a; }
+.footer-description { color: #91a3bd; font-size: 13px; line-height: 1.8; max-width: 320px; margin-bottom: 25px; }
+.footer h4 { color: white; font-size: 14px; margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 13px; }
+.footer-links a, .footer-contact p, .footer-contact a { color: #91a3bd; font-size: 13px; line-height: 1.6; }
+.footer-links a:hover, .footer-contact a:hover { color: white; }
+.footer-contact p { margin-bottom: 10px; }
+.footer-contact i { width: 22px; }
+.copyright { margin-top: 50px; padding-top: 20px; border-top: 1px solid #263347; color: #91a3bd; font-size: 12px; display: flex; justify-content: space-between; }
+
+/* RESPONSIVE */
+@media(max-width: 1200px) {
+    .domains-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media(max-width: 1100px) {
+    .nav-links { display: none; }
+    .internship-banner { flex-direction: column; align-items: flex-start; gap: 30px; }
+    .intern-features { border-left: none; padding-left: 0; flex-wrap: wrap; }
+    .why-join-section { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width: 750px) {
+    .domains-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-location span { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .copyright { flex-direction: column; gap: 10px; }
+    .grow-card { flex-direction: column; text-align: center; }
+    .position-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+@media(max-width: 500px) {
+    .domains-grid { grid-template-columns: 1fr; }
+    .intern-left { flex-direction: column; align-items: flex-start; }
+    .pos-tags { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="EvenBreak Logo"></a>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+            <a href="index.html#services">Services <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="it.html">IT</a>
+                    <a href="engineering.html">Engineering</a>
+                    <a href="bim.html">Building Information Modeling (BIM)</a>
+                    <a href="gis.html">QGIS & GIS Services</a>
+                    <a href="pdf.html">PDF Accessibility & Remediation</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="industries.html">Industries <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                <div class="dropdown-container">
+                    <a href="healthcare.html">Healthcare</a>
+                    <a href="government.html">Government</a>
+                    <a href="manufacturing.html">Manufacturing</a>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="construction.html">Construction</a>
+                    <a href="insurance.html">Insurance</a>
+                    <a href="education.html">Education</a>
+                    <a href="publishing.html">Publishing</a>
+                    <a href="corporate.html">Corporate</a>
+                    <a href="enterprise.html">Enterprise</a>
+                    <a href="infrastructure.html">Infrastructure</a>
+                    <a href="utilities.html">Utilities</a>
+                    <a href="realestate.html">Real Estate</a>
+                </div>
+            </div>
+        </div>
+        <a href="what-we-think.html">What We Think</a>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="hiring.html" class="hiring-btn">Hiring 🔥</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd,+Waltair+Main+Road,+Visakhapatnam" target="_blank" rel="noopener" class="nav-location" title="Visit our office">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Visakhapatnam</span>
+        </a>
+        <div class="nav-icons">
+            <span><i class="fa-solid fa-magnifying-glass"></i> Search</span>
+            <span><i class="fa-solid fa-globe"></i> IN <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></span>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="careers-hero">
+    <div class="hero-content">
+        <div class="small-heading">HIRING</div>
+        <h1>Currently Hiring!</h1>
+        <h2>Kickstart Your Career with EVENBREAK HR TECHNO SOLUTIONS</h2>
+        <p>Are you passionate about technology and looking to grow in IT? Join our team and be a part of our innovative journey.</p>
+        <a href="apply.html" class="btn-blue">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- INTERNSHIP BANNER -->
+<section class="internship-banner">
+    <div class="intern-left">
+        
+        <svg class="cap-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="capTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#2a3b56"/>
+                    <stop offset="100%" stop-color="#111a28"/>
+                </linearGradient>
+                <linearGradient id="capBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#3b506e"/>
+                    <stop offset="100%" stop-color="#1e2a3a"/>
+                </linearGradient>
+                <linearGradient id="book" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#e2e8f0"/>
+                </linearGradient>
+                <linearGradient id="cover" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="170" rx="70" ry="15" fill="rgba(0,0,0,0.1)"/>
+            <polygon points="40,150 160,150 160,165 40,165" fill="#cbd5e1"/>
+            <polygon points="40,150 50,140 170,140 160,150" fill="url(#book)"/>
+            <polygon points="40,150 50,140 50,155 40,165" fill="url(#cover)"/>
+            <path d="M 65 70 Q 50 110 55 140" stroke="#fbbf24" stroke-width="3" fill="none"/>
+            <polygon points="50,140 60,140 55,155" fill="#fbbf24"/>
+            <path d="M 60 80 Q 100 50 140 80 L 140 100 Q 100 120 60 100 Z" fill="url(#capBase)"/>
+            <polygon points="100,30 170,65 100,100 30,65" fill="url(#capTop)"/>
+            <polygon points="100,35 155,65 100,90 45,65" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="100" cy="65" r="6" fill="#fbbf24"/>
+            <circle cx="100" cy="65" r="3" fill="#f59e0b"/>
+        </svg>
+        
+        <div class="intern-text">
+            <div class="badge">3-Month IT Internship Program</div>
+            <h2>Learn • Build • Grow</h2>
+            <span class="batches">Eligible Batches: 2025 - 2026</span>
+            <p>Gain hands-on experience and work on real-world projects with industry experts.</p>
+        </div>
+    </div>
+
+    <div class="intern-features">
+        <div class="feature-item">
+            <i class="fa-regular fa-calendar-days"></i>
+            <h4>Duration<br>3 Months</h4>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-gift"></i>
+            <h4>Stipend<br>Provided</h4>
+            <p>(Performance Based)</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-rocket"></i>
+            <h4>Post-Internship<br>Full-Time Opportunities</h4>
+        </div>
+    </div>
+
+    <a href="apply.html" class="intern-btn">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+</section>
+
+<!-- HIRING DOMAINS (Internship Domains) -->
+<section class="domains-section">
+    <div class="section-title">Internship Domains</div>
+    <div class="domains-grid">
+        <div class="domain-card">
+            <i class="fa-brands fa-java"></i>
+            <h4>Java Development</h4>
+        </div>
+        <div class="domain-card">
+            <i class="fa-brands fa-python"></i>
+            <h4>Python Development</h4>
+        </div>
+        <div class="domain-card">
+            <i class="fa-solid fa-code"></i>
+            <h4>.NET Development</h4>
+        </div>
+        <div class="domain-card">
+            <i class="fa-solid fa-layer-group"></i>
+            <h4>Full Stack Development</h4>
+        </div>
+        <div class="domain-card">
+            <i class="fa-solid fa-cloud"></i>
+            <h4>AWS & Cloud</h4>
+        </div>
+        <div class="domain-card">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <h4>GIS & QGIS</h4>
+        </div>
+    </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section class="positions-section" id="open-positions">
+    <div class="section-title">Current Openings</div>
+    
+    <div class="position-card">
+        <div class="pos-info">
+            <h3>GIS Intern (QGIS / ArcGIS)</h3>
+            <div class="pos-tags">
+                <span class="pos-tag"><i class="fa-solid fa-location-dot"></i> Visakhapatnam / Remote</span>
+                <span class="pos-tag"><i class="fa-solid fa-briefcase"></i> 3 Months</span>
+                <span class="pos-tag"><i class="fa-solid fa-graduation-cap"></i> Batch 2025/2026</span>
+            </div>
+        </div>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="position-card">
+        <div class="pos-info">
+            <h3>Full Stack Developer (Intern)</h3>
+            <div class="pos-tags">
+                <span class="pos-tag"><i class="fa-solid fa-location-dot"></i> Visakhapatnam</span>
+                <span class="pos-tag"><i class="fa-solid fa-briefcase"></i> 3 Months</span>
+                <span class="pos-tag"><i class="fa-solid fa-graduation-cap"></i> Batch 2025/2026</span>
+            </div>
+        </div>
+        <a href="apply.html" class="apply-btn">Apply Now</a>
+    </div>
+</section>
+
+<!-- WHY JOIN US SECTION -->
+<section class="why-join-section">
+    <div class="why-col">
+        <h3>Why Join Us?</h3>
+        <ul class="why-list">
+            <li><i class="fa-solid fa-circle-check"></i> Work on cutting-edge technologies</li>
+            <li><i class="fa-solid fa-circle-check"></i> Learn from industry experts</li>
+            <li><i class="fa-solid fa-circle-check"></i> Grow your career with us</li>
+            <li><i class="fa-solid fa-circle-check"></i> Be part of an innovative team</li>
+        </ul>
+    </div>
+
+    <div class="why-col">
+        <h3>What to Expect?</h3>
+        <ul class="why-list">
+            <li><i class="fa-solid fa-circle-check"></i> 3-Month Internship with hands-on experience</li>
+            <li><i class="fa-solid fa-circle-check"></i> Performance-based stipend</li>
+            <li><i class="fa-solid fa-circle-check"></i> Mentorship and career guidance</li>
+            <li><i class="fa-solid fa-circle-check"></i> Opportunity for full-time role</li>
+        </ul>
+    </div>
+
+    <div class="grow-card">
+        <i class="fa-solid fa-rocket grow-icon"></i>
+        <div class="grow-text">
+            <h3>Let's Grow Together</h3>
+            <p>Take the next step in your career with EVENBREAK.</p>
+            <a href="apply.html" class="btn-blue">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">EB<span>HRTS</span></div>
+            <p class="footer-description">EvenBreak HR Techno Services Pvt. Ltd. is a technology-driven service company delivering digital and specialized business solutions.</p>
+            <div class="footer-contact">
+                <p><i class="fa-regular fa-envelope"></i> <a href="mailto:info@evenbreakhr.com">info@evenbreakhr.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+918498999299">+91 84989 99299</a></p>
+                <p><i class="fa-solid fa-location-dot"></i> <a href="https://maps.google.com/?q=Evenbreak+hr+techno+Services+Pvt+Ltd" target="_blank" style="line-height: 1.6;">Uplands, Waltair Main Rd, Visakhapatnam, Andhra Pradesh 530003</a></p>
+                <p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/company/evenbreak-hr-services/">EvenBreak HR Services on LinkedIn</a></p>
+            </div>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <div class="footer-links">
+                <a href="engineering.html">Engineering</a>
+                <a href="it.html">IT</a>
+                <a href="bim.html">Building Information Modeling (BIM)</a>
+                <a href="gis.html">QGIS & GIS Services</a>
+                <a href="pdf.html">PDF Accessibility & Remediation</a>
+            </div>
+        </div>
+        <div>
+            <h4>Industries</h4>
+            <div class="footer-links">
+                <a href="healthcare.html">Healthcare</a>
+                <a href="government.html">Government</a>
+                <a href="manufacturing.html">Manufacturing</a>
+                <a href="architecture.html">Architecture</a>
+                <a href="construction.html">Construction</a>
+                <a href="insurance.html">Insurance</a>
+                <a href="education.html">Education</a>
+                <a href="publishing.html">Publishing</a>
+                <a href="industries.html">View all</a>
+            </div>
+        </div>
+        <div>
+            <h4>Company</h4>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="what-we-think.html">What We Think</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2017 EvenBreak HR Techno Services Pvt. Ltd. All rights reserved.</p>
+        <p>Established 2017 | Visakhapatnam, Andhra Pradesh</p>
+    </div>
+</footer>
+
+</body>
+</html>
